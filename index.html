@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4f0">
+  <title>COMBO LAB · 졸업고사 암기 훈련</title>
+  <meta name="description" content="24개 시험범위를 문제별 퀴즈, 코드 조립, 가상 터미널로 연습하세요.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="./"><span class="logo">C<span>_</span></span><span>COMBO <b>LAB</b><small>컴퓨터 보안 · 졸업고사</small></span></a>
+    <div class="side-label">YOUR PRACTICE SPACE</div>
+    <nav class="mode-nav" aria-label="학습 모드">
+      <button class="mode active" data-mode="learn"><span>◫</span>문제별 훈련<span class="nav-count">24</span></button>
+      <button class="mode" data-mode="review"><span>↻</span>오답 다시 풀기<span id="wrong-count" class="nav-count">0</span></button>
+      <button class="mode" data-mode="exam"><span>◷</span>문서 기반 실전 퀴즈</button>
+    </nav>
+    <div class="side-label topic-label">시험범위 바로가기</div>
+    <div id="lesson-nav" class="lesson-nav"></div>
+    <div class="side-bottom"><span class="status-dot"></span>학습 기록은 이 브라우저에 저장됩니다<button id="reset-progress">기록 초기화</button></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar"><div><span class="live-dot"></span>LEARNING WORKSPACE <span class="divider">/</span> <span id="mode-label">문제별 훈련</span></div><button id="shuffle" class="quiet-button">⇄ 랜덤 문제</button></header>
+    <main>
+      <section class="intro"><div><div class="eyebrow">DOCS-BASED PRACTICE</div><h1>외우기 전에,<br class="mobile-break"> 한번 해보세요<span>.</span></h1><p>Docs 원문에 근거한 퀴즈와 명령어 연습. 7번은 정답 미기재로 비채점.</p></div><div class="intro-badge"><span>24</span><small>문제 번호<br>하나씩 확실하게</small></div></section>
+      <section class="metrics" aria-label="학습 현황"><div><span class="metric-label">정복한 문제</span><strong><span id="mastered">0</span><em>/ 23</em></strong><div class="progress-track"><i id="overall-bar"></i></div></div><div><span class="metric-label">첫 시도 정답률</span><strong id="accuracy">—</strong><small>각 퀴즈의 첫 제출 기준</small></div><div><span class="metric-label">복습이 필요한 퀴즈</span><strong id="review-total">0</strong><small>틀린 항목을 다시 풀어보세요</small></div></section>
+      <div id="practice-area">
+        <div class="section-heading"><div><span class="section-index" id="section-index">01</span><span id="section-title">웹 기초</span></div><span id="task-position">QUIZ 1 / 2</span></div>
+        <section class="practice-card" id="practice-card">
+          <div class="card-top"><span id="kind-badge" class="kind-badge">선택 퀴즈</span><span id="question-number" class="question-number">시험 1번</span></div>
+          <h2 id="question-title"></h2><p id="question-prompt" class="question-prompt"></p>
+          <div id="question-context"></div><div id="answer-area"></div>
+          <details id="question-source" class="source-details"><summary>Docs 근거 원문 확인</summary><a id="source-link" target="_blank" rel="noopener"></a><blockquote id="source-quote"></blockquote></details><div class="hint-row"><button id="hint-button">◌ 힌트 보기</button><span id="hint-text" hidden></span></div>
+          <div class="card-actions"><span id="attempt-label">생각한 답을 직접 선택해보세요.</span><button id="check-answer" class="primary">정답 확인 <span>↵</span></button></div>
+          <div id="feedback" class="feedback" hidden aria-live="polite"></div>
+        </section>
+        <div class="below-card"><button id="previous" class="quiet-button">← 이전 퀴즈</button><div id="quiz-dots"></div><button id="next" class="next-button">다음 퀴즈 →</button></div>
+        <section class="memory-note"><div class="note-icon">✧</div><div><span class="eyebrow">MEMORY KEY</span><h3 id="memory-key"></h3><p id="memory-detail"></p><details><summary>이 문제의 개념 정리 펼치기</summary><div id="lesson-note"></div></details></div></section>
+      </div>
+      <section id="result-area" class="result-card" hidden></section>
+      <footer><span>COMBO LAB</span><span>수업 노트 기반 · 시험범위 1–24번</span><a href="notes.md" download>전체 Markdown 정리 ↓</a><button id="footer-reset" class="quiet-button">기록 초기화</button></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" hidden></div>
+  <dialog id="reset-dialog"><h2>학습 기록을 초기화할까요?</h2><p>이 브라우저의 정답 기록과 오답 목록이 지워집니다.</p><div><button id="cancel-reset" class="quiet-button">취소</button><button id="confirm-reset" class="primary">초기화</button></div></dialog>
+  <script src="data.js"></script><script src="app.js"></script>
+</body>
+</html>
